@@ -32,17 +32,17 @@ var bio = {
 };
 //$("#main").append(bio.name);
 
-var work ={};
-work.position="Estágio";
-work.employer="Sasuc";
-work.years="1";
+// var work ={};
+// work.position="Estágio";
+// work.employer="Sasuc";
+// work.years="1";
 //$("#main").append(work["position"]);
 
 // education["name"] ="Instituto Miguel Torga";
 // education["years"]="2012-2015";
 // education["city"]="Coimbra";
 //$("#main").append(education.name);
-
+// education JSON
  var education = {
    "schools":[
      {
@@ -66,4 +66,43 @@ work.years="1";
      "url":"http://www.idacity.com/course/ud804"
    }
  ]
+ }
+ // WorK JSON
+ var work ={
+   "jobs":[
+     {
+    "employer":"Estagio",
+    "title":"Sasuc",
+    "location":"Coimbra",
+    "dates":"19/06/2015 - 22/06/2016",
+    "description":"Web Developer"
+  },
+  {
+ "employer":"Estagio",
+ "title":"Mau Maria",
+ "location":"Coimbra",
+ "dates":"",
+ "description":"Fotografia"
+}
+   ]
+ }
+ // Project JSON
+ var projects ={
+   "projects":[
+     {
+       "title":"Project 1",
+       "dates" :"06/06/2016",
+       "description":"Test 1"
+     },
+     {
+       "title":"Project 2",
+       "dates" :"06/06/2016",
+       "description":"Test 2"
+     },
+     {
+       "title":"Project 3",
+       "dates" :"06/06/2016",
+       "description":"Test 3"
+     }
+   ]
  }
