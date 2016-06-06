@@ -38,6 +38,11 @@ work.employer="Sasuc";
 work.years="1";
 //$("#main").append(work["position"]);
 
+// education["name"] ="Instituto Miguel Torga";
+// education["years"]="2012-2015";
+// education["city"]="Coimbra";
+//$("#main").append(education.name);
+
  var education = {
    "schools":[
      {
@@ -62,9 +67,3 @@ work.years="1";
    }
  ]
  }
-
-
- // education["name"] ="Instituto Miguel Torga";
- // education["years"]="2012-2015";
- // education["city"]="Coimbra";
-//$("#main").append(education.name);
