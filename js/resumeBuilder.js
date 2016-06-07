@@ -23,8 +23,7 @@ $("#header").prepend(formattedRole);
 // name
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 $("#header").prepend(formattedName);
-// Contact Generic
-$("#header").append(HTMLcontactGeneric);
+
 // mobile
 var formattedmobile = HTMLmobile.replace("%data%", bio.contacts.mobile)
 $("#topContacts").append(formattedmobile);
@@ -63,6 +62,59 @@ if (bio.skills.length > 0) {
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
     $("#skills").append(formattedSkill);
 }
+// Work Json
+var work = {
+        "jobs": [{
+            "employer": "Estagio",
+            "title": "Sasuc",
+            "location": "Coimbra",
+            "dates": "19/06/2015 (1 year)",
+            "description": "Web Developer"
+        }, {
+            "employer": "Estagio",
+            "title": "Mau Maria",
+            "location": "Coimbra",
+            "dates": "2011 (2 months)",
+            "description": "Fotografia"
+        }]
+    }
+    //******** Work
+function displayWork() {
+    for (job in work.jobs) {
+        $("#workExperience").append(HTMLworkStart);
+        // employer
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+        //Title
+        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+        // Dates
+        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+        //location
+        var formattedlocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+        //description
+        var formatteddescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+        var formattedEmployerTitle = formattedEmployer + formattedTitle + formattedDates + formattedlocation + formatteddescription;
+        $(".work-entry:last").append(formattedEmployerTitle);
+    }
+}
+displayWork();
+
+$(document).click(function(loc) {
+    // your code goes here
+    console.log("page on X: " + loc.pageX + ", page on Y: " + loc.pageY);
+});
+// the name Game
+$("#main").append(internationalizeButton);
+var name = bio.name;
+
+function inName(newName) {
+    var capitalizer_name = newName;
+    var names = newName.split(" ");
+    names[1] = names[1].toUpperCase();
+    names[0] = names[0].slice(0, 1).toUpperCase() + names[0].slice(1).toLowerCase();
+    capitalizer_name = names.join(" ");
+    return (capitalizer_name)
+}
 // Json Education
 var education = {
         "schools": [{
@@ -83,22 +135,6 @@ var education = {
             "school": "Udacity",
             "dates": "2016",
             "url": "http://www.idacity.com/course/ud804"
-        }]
-    }
-    // WorK JSON
-var work = {
-        "jobs": [{
-            "employer": "Estagio",
-            "title": "Sasuc",
-            "location": "Coimbra",
-            "dates": "19/06/2015 - 22/06/2016",
-            "description": "Web Developer"
-        }, {
-            "employer": "Estagio",
-            "title": "Mau Maria",
-            "location": "Coimbra",
-            "dates": "",
-            "description": "Fotografia"
         }]
     }
     // Project JSON
