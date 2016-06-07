@@ -76,6 +76,7 @@ var work = {
             "location": "Coimbra",
             "dates": "2011 (2 months)",
             "description": "Fotografia"
+
         }]
     }
     //******** Work
@@ -93,8 +94,8 @@ function displayWork() {
         //description
         var formatteddescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
-        var formattedEmployerTitle = formattedEmployer + formattedTitle + formattedDates + formattedlocation + formatteddescription;
-        $(".work-entry:last").append(formattedEmployerTitle);
+        var formattedEmployerTitleDatesLocationDescription = formattedEmployer + formattedTitle + formattedDates + formattedlocation + formatteddescription;
+        $(".work-entry:last").append(formattedEmployerTitleDatesLocationDescription);
     }
 }
 displayWork();
@@ -115,41 +116,69 @@ function inName(newName) {
     capitalizer_name = names.join(" ");
     return (capitalizer_name)
 }
-// Json Education
-var education = {
-        "schools": [{
-            "location": "Portugal",
-            "city": "Coimbra",
-            "name": "Instituto Superior Miguel Torga",
-            "graduation": "Licenciatura",
-            "years": "2012-2015"
+// Project JSON
+var projects = {
+        "projects": [{
+            "title": "Project 1",
+            "dates": "06/06/2016",
+            "description": "Test 1",
+            "images": "images/test.png",
         }, {
-            "location": "Portugal",
-            "city": "Coimbra",
-            "name": "Arca",
-            "graduation": "Pos-Graudação",
-            "years": "2011-2012"
-        }],
-        "onlineCoures": [{
-            "title": "JavaScript Syntax",
-            "school": "Udacity",
-            "dates": "2016",
-            "url": "http://www.idacity.com/course/ud804"
+            "title": "Project 2",
+            "dates": "06/06/2016",
+            "description": "Test 2",
+            "images": "images/test.png"
+        }, {
+            "title": "Project 3",
+            "dates": "06/06/2016",
+            "description": "Test 3",
+            "images": "images/test.png"
         }]
     }
-    // Project JSON
-var projects = {
-    "projects": [{
-        "title": "Project 1",
-        "dates": "06/06/2016",
-        "description": "Test 1"
+    //******** Project
+projects.display = function() {
+    for (project in projects.projects) {
+        $("#projects").append(HTMLprojectStart);
+        //Title
+        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        $(".project-entry:last").append(formattedTitle);
+        // Dates
+        var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        $(".project-entry:last").append(formattedDates);
+        //description
+        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+        $(".project-entry:last").append(formattedDescription);
+        //images
+
+        if (projects.projects[project].images.length > 0) {
+            for (image in projects.projects[project].images) {
+                var formattedimages = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+                $(".project-entry:last").append(formattedimages);
+            }
+        }
+    }
+}
+projects.display();
+
+// Json Education
+var education = {
+    "schools": [{
+        "location": "Portugal",
+        "city": "Coimbra",
+        "name": "Instituto Superior Miguel Torga",
+        "graduation": "Licenciatura",
+        "years": "2012-2015"
     }, {
-        "title": "Project 2",
-        "dates": "06/06/2016",
-        "description": "Test 2"
-    }, {
-        "title": "Project 3",
-        "dates": "06/06/2016",
-        "description": "Test 3"
+        "location": "Portugal",
+        "city": "Coimbra",
+        "name": "Arca",
+        "graduation": "Pos-Graudação",
+        "years": "2011-2012"
+    }],
+    "onlineCoures": [{
+        "title": "JavaScript Syntax",
+        "school": "Udacity",
+        "dates": "2016",
+        "url": "http://www.idacity.com/course/ud804"
     }]
 }
