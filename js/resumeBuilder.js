@@ -84,7 +84,7 @@ var work = {
         }]
     }
     //******** Work
-function displayWork() {
+work.display = function() {
     for (job in work.jobs) {
         $("#workExperience").append(HTMLworkStart);
         // employer
@@ -102,7 +102,7 @@ function displayWork() {
         $(".work-entry:last").append(formattedEmployerTitleDatesLocationDescription);
     }
 }
-displayWork();
+work.display();
 
 $(document).click(function(loc) {
     // your code goes here
@@ -162,14 +162,14 @@ projects.display();
 // Json Education
 var education = {
     "schools": [{
-        "location": "Portugal",
-        "city": "Coimbra",
+        "location": "Largo Cruz de Celas 1",
+        "city": "Coimbra, Portugal",
         "name": "Instituto Superior Miguel Torga",
         "graduation": "Licenciatura",
         "years": "2012-2015"
     }, {
-        "location": "Portugal",
-        "city": "Coimbra",
+        "location": "ARCA-EUAC Escola Universitária das Artes de Coimbra Campus Universitário da ARCA Lordemão ",
+        "city": "Coimbra, Portugal",
         "name": "Arca",
         "graduation": "Pos-Graudação",
         "years": "2011-2012"
@@ -183,21 +183,34 @@ var education = {
 }
 
 education.display = function() {
+    $("#education").append(HTMLschoolStart);
     for (school in education.schools) {
-        $("#education").append(HTMLschoolStart);
         // name
         var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
-        //Title
+        //Degree
         var formattedGraduation = HTMLschoolDegree.replace("%data%", education.schools[school].graduation);
         // Dates
         var formattedYears = HTMLschoolDates.replace("%data%", education.schools[school].years);
         //location
         var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-        //description
+        //Major
         var formattedDescription = HTMLschoolMajor.replace("%data%", education.schools[school].city);
 
         var all = formattedName + formattedGraduation + formattedYears + formattedLocation + formattedDescription;
-        $("education-entry:last").append(all);
+        $(".education-entry:last").append(all);
+    }
+    $("#education").append(HTMLonlineClasses);
+    for (onlineCourse in education.onlineCoures) {
+        // title
+        var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCoures[onlineCourse].title);
+        //school
+        var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCoures[onlineCourse].school);
+        // dates
+        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCoures[onlineCourse].dates);
+        //url
+        var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCoures[onlineCourse].url);
+        var all = formattedTitle + formattedSchool + formattedDates + formattedUrl;
+        $(".education-entry:last").append(all);
     }
 }
 education.display();
