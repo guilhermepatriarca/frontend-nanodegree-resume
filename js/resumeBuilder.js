@@ -23,13 +23,14 @@ $("#header").prepend(formattedRole);
 // name
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 $("#header").prepend(formattedName);
-
 // mobile
 var formattedmobile = HTMLmobile.replace("%data%", bio.contacts.mobile)
 $("#topContacts").append(formattedmobile);
+$("#footerContacts").append(formattedmobile);
 // email
 var formattedemail = HTMLemail.replace("%data%", bio.contacts.email)
 $("#topContacts").append(formattedemail);
+$("#footerContacts").append(formattedemail);
 // github
 var github_change = bio.contacts.github
 var change_string = function(github_change) {
@@ -40,12 +41,15 @@ console.log(change_string(github_change))
     // SLICE
 var formattedgithub = HTMLgithub.replace("%data%", change_string(github_change))
 $("#topContacts").append(formattedgithub);
+$("#footerContacts").append(formattedgithub);
 // blog
 var formattedblog = HTMLblog.replace("%data%", bio.contacts.blog)
 $("#topContacts").append(formattedblog);
+$("#footerContacts").append(formattedblog);
 // location
 var formattedlocation = HTMLlocation.replace("%data%", bio.contacts.location)
 $("#topContacts").append(formattedlocation);
+$("#footerContacts").append(formattedlocation);
 // Pic
 var formattedboiPic = HTMLbioPic.replace("%data%", bio.bioPic)
 $("#header").append(formattedboiPic);
@@ -105,8 +109,8 @@ $(document).click(function(loc) {
     console.log("page on X: " + loc.pageX + ", page on Y: " + loc.pageY);
 });
 // the name Game
-$("#main").append(internationalizeButton);
-var name = bio.name;
+// $("#main").append(internationalizeButton);
+// var name = bio.name;
 
 function inName(newName) {
     var capitalizer_name = newName;
@@ -149,13 +153,8 @@ projects.display = function() {
         var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
         $(".project-entry:last").append(formattedDescription);
         //images
-
-        if (projects.projects[project].images.length > 0) {
-            for (image in projects.projects[project].images) {
-                var formattedimages = HTMLprojectImage.replace("%data%", projects.projects[project].images);
-                $(".project-entry:last").append(formattedimages);
-            }
-        }
+        var formattedimages = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+        $(".project-entry:last").append(formattedimages);
     }
 }
 projects.display();
@@ -182,3 +181,23 @@ var education = {
         "url": "http://www.idacity.com/course/ud804"
     }]
 }
+
+education.display = function() {
+    for (school in education.schools) {
+        $("#education").append(HTMLschoolStart);
+        // name
+        var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+        //Title
+        var formattedGraduation = HTMLschoolDegree.replace("%data%", education.schools[school].graduation);
+        // Dates
+        var formattedYears = HTMLschoolDates.replace("%data%", education.schools[school].years);
+        //location
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+        //description
+        var formattedDescription = HTMLschoolMajor.replace("%data%", education.schools[school].city);
+
+        var all = formattedName + formattedGraduation + formattedYears + formattedLocation + formattedDescription;
+        $("education-entry:last").append(all);
+    }
+}
+education.display();
